@@ -8,7 +8,7 @@ def lotin_krill(txt: str) -> str:
             'I': 'И', 'J': 'Ж', 'K': 'К', 'L': 'Л', 'M': 'М', 'N': 'Н', 'O': 'О', "O'": 'Ў', 'P': 'П',
             'Q': 'Қ', 'R': 'Р', 'S': 'С', 'Ch': 'Ч', 'Sh': 'Ш', 'T': 'Т', 'U': 'У', 'V': 'В', 'W': 'В', 'X': 'X',
             'Y': 'Й', 'Z': 'З',
-            'а': 'a', 'б': 'b', 'д': 'd', 'ё':'yo', 'е': 'ye', 'ф': 'f', 'г': 'g', 'ҳ': 'h',
+            'а': 'a', 'б': 'b', 'д': 'd', 'ё':'yo',  'ф': 'f', 'г': 'g', 'ҳ': 'h',
             'и': 'i', 'ж': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p',
             'қ': 'q', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ў': "o’", 'в': 'v', 'в': 'w', 'х': 'x',
             'й': 'y', 'з': 'z',
@@ -33,10 +33,10 @@ def lotin_krill(txt: str) -> str:
                 else:
                     new_txt += lat_to_cyr.get(txt[i], txt[i])
             elif txt[i] in 'SscC':
-                if txt[i+1] in 'h':
+                if txt[i+1] == 'h':
                     new_txt += lat_to_cyr.get(txt[i:i+2], txt[i])
                     i+=1
-                elif txt[i+1] in 'H':
+                elif txt[i+1] == 'H':
                     new_txt += lat_to_cyr.get(txt[i:i+2].title(), txt[i])
                     i+=1
                 else:
@@ -50,7 +50,7 @@ def lotin_krill(txt: str) -> str:
             elif txt[i] in 'eE':
                 if i == 0:
                     new_txt += lat_to_cyr.get(' ' + txt[i], txt[i])
-                elif txt[i-1] in " ":
+                elif txt[i-1] == " ":
                     new_txt += lat_to_cyr.get(txt[i-1:i+1], txt[i])
                 else:
                     new_txt += lat_to_cyr.get(txt[i], txt[i])
